@@ -1,0 +1,93 @@
+#include <iostream>
+
+using namespace std;
+int n=0; //number of entries
+
+//dvd class
+class DVD
+{
+public:
+string name;
+float length;
+int no;
+
+};
+
+//add DVD details
+void addDVD(DVD d[])
+{
+cout<<"\nDVD Name: ";
+cin>>d[n].name;
+cout<<"\nDVD running length: ";
+cin>>d[n].length;
+cout<<"\nDVD Number: ";
+cin>>d[n].no;
+cout<<"\nRecord Added\n";
+n++;
+
+}
+
+//delete DVD detail
+void deleteDVD(DVD d[])
+{
+int num;
+cout<<"\nEnter DVD no to delete: ";
+cin>>num;
+for(int i=0;i<n;i++)
+{
+if(d[i].no==num)
+{
+for(int j=i+1;j<n;j++)
+{
+d[i]=d[j];
+}
+n--;
+}
+
+}
+cout<<"\nRecord deleted\n";
+}
+
+//DVD entries
+void showDVD(DVD d[])
+{
+
+cout<<"\nDVD Entries:\n";
+for(int i=0;i<n;i++)
+cout<<"\n"<<d[i].name<<" "<<d[i].length<<" "<<d[i].no;
+cout<<"\n\n";
+}
+
+//main
+int main()
+{
+int ch;
+char c;
+DVD d[5]; //object for DVD class
+
+//menu
+do{
+cout<<"\nMenu\n"
+<<"\n1.Add DVD"
+<<"\n2.Delete DVD"
+<<"\n3.Show DVD: ";
+cin>>ch; //get option
+
+//call function
+switch(ch)
+{
+case 1:
+addDVD(d);
+break;
+case 2:
+deleteDVD(d);
+break;
+case 3:
+showDVD(d);
+}
+
+cout<<"\nTo continue press 'y': ";
+cin>>c;
+}while(c=='y');
+return 0;
+}
